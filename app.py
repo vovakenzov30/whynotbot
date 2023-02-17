@@ -1,7 +1,8 @@
-import os
-
-from aiogram import Bot, Dispatcher, types, executor
+from aiogram import Bot, types, utils
+from aiogram.dispatcher import Dispatcher
+from aiogram.utils import executor
 import config
+import os
 
 # from aiogram.utils import executor
 bot = Bot(token=config.TOKEN)
@@ -30,5 +31,5 @@ executor.start_webhook(
     on_shutdown=on_shutdown,
     skip_updates=True,
     host="0.0.0.0",
-    port=int(os.environ.get("PORT"), 5000)
+    port=int(os.environ.get(config.PORT), 5000)
 )
