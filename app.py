@@ -10,7 +10,7 @@ dp = Dispatcher(bot)
 
 
 async def on_startup(dp):
-    await bot.set_webhook(config.URL)
+    await bot.set_webhook(config.URL_APP)
 
 
 async def on_shutdown(dp):
@@ -24,12 +24,22 @@ async def get_message(message: types.Message):
 
     await bot.send_message(chat_id=chat_id, text=text)
 
+# executor.start_webhook(
+#     dispatcher=dp,
+#     webhook_path='',
+#     on_startup=on_startup,
+#     on_shutdown=on_shutdown,
+#     skip_updates=True,
+#     host="0.0.0.0",
+#     port=int(os.environ.get(config.PORT), 5000)
+# )
+
 executor.start_webhook(
     dispatcher=dp,
-    webhook_path='',
     on_startup=on_startup,
     on_shutdown=on_shutdown,
     skip_updates=True,
+    webhook_path='',
     host="0.0.0.0",
-    port=int(os.environ.get(config.PORT), 5000)
+    port=int(os.environ.get('PORT', 5000))
 )
