@@ -1,7 +1,7 @@
 import logging
 
 from aiogram import Dispatcher
-
+import config
 from config import admin_id
 
 
