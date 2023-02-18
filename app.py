@@ -18,7 +18,11 @@ async def on_startup(dp):
 async def on_shutdown(dp):
     await bot.delete_webhook()
 
-
+@dp.message_handler(text='/start')
+async def command_start(message: types.Message):
+    await message.answer_photo(photo=config.photo,
+                               caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>',
+                               )
 
 @dp.message_handler()
 async def get_message(message: types.Message):
