@@ -25,8 +25,7 @@ async def on_shutdown(dp):
 async def get_message(message: types.Message):
     chat_id = message.chat.id
     text = 'Hello'
-    await  on_startup_notify(dp)
-    await  set_default_commands(dp)
+
     await bot.send_message(chat_id=chat_id, text=text)
 
 
