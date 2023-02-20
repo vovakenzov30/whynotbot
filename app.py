@@ -1,6 +1,8 @@
 from aiogram import Bot, types, utils
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
+
+import keyboards.inline_menu
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
 import config
@@ -21,7 +23,7 @@ async def on_shutdown(dp):
 @dp.message_handler(text='/start')
 async def command_start(message: types.Message, user_id):
     await message.answer_photo(photo=config.photo,
-                               caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>', reply_markup=await main_menu(user_id)
+                               caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>', reply_markup=await keyboards.inline_menu.main_menu(user_id)
                                )
 
 @dp.message_handler()
