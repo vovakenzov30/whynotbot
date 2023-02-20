@@ -5,7 +5,7 @@ from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
 import config
 import os
-
+from keyboards.inline_menu import *
 # from aiogram.utils import executor
 bot = Bot(token=config.TOKEN)
 dp = Dispatcher(bot)
@@ -19,9 +19,9 @@ async def on_shutdown(dp):
     await bot.delete_webhook()
 
 @dp.message_handler(text='/start')
-async def command_start(message: types.Message):
+async def command_start(message: types.Message, user_id):
     await message.answer_photo(photo=config.photo,
-                               caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>',
+                               caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>', reply_markup=await main_menu(user_id)
                                )
 
 @dp.message_handler()
