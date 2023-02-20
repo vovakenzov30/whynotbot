@@ -21,9 +21,10 @@ async def on_shutdown(dp):
     await bot.delete_webhook()
 
 @dp.message_handler(text='/start')
-async def command_start(message: types.Message, user_id):
+async def command_start(message: types.Message):
+    user_id = message.from_user.id
     await message.answer_photo(photo=config.photo,
-                               caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>', reply_markup=await keyboards.inline_menu.main_menu(user_id)
+                               caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>', reply_markup=await main_menu(user_id)
                                )
 
 @dp.message_handler()
