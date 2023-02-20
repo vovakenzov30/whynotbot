@@ -2,8 +2,8 @@ from aiogram import Bot, types, utils
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 
-from keyboards.inline_menu import main_menu
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
+from keyboards.inline_user_menu import main_menu, settings_menu
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, CallbackQuery
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
 import config
@@ -26,6 +26,10 @@ async def command_start(message: types.Message):
     await message.answer_photo(photo=config.photo,
                                caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>', reply_markup=main_menu
                                )
+@dp.callback_query_handler(text='настройки')
+async def send_message(call: CallbackQuery):
+    await call.message.answer('️⚙️ Настройки', reply_markup=settings_menu)
+
 
 @dp.message_handler()
 async def get_message(message: types.Message):
