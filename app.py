@@ -26,9 +26,9 @@ async def command_start(message: types.Message):
     await message.answer_photo(photo=config.photo,
                                caption=f'<b>Welcome {message.from_user.full_name} to my bot!</b>', reply_markup=main_menu
                                )
-@dp.callback_query_handler(text='настройки')
-async def send_message(call: CallbackQuery):
-    await call.message.answer('️⚙️ Настройки', reply_markup=settings_menu)
+# @dp.callback_query_handler(text='настройки')
+# async def send_message(call: CallbackQuery):
+#     await call.message.answer('️⚙️ Настройки', reply_markup=settings_menu)
 
 
 @dp.message_handler()

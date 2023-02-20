@@ -22,7 +22,7 @@ main_menu = InlineKeyboardMarkup(
             InlineKeyboardButton(text='⚙️ Настройки', callback_data='настройки'),
         ],
     ]
-),
+)
 
 settings_menu = InlineKeyboardMarkup(
     inline_keyboard=[
