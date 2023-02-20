@@ -1,28 +1,25 @@
-from aiogram import types
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
-import asyncio
+# from aiogram import types
+#
+# from app import dp
+#
+#
+# @dp.message_handler(text='Создать ссылку')
+# async def show_inline_menu(message: types.Message):
+#     await message.answer('aaa', reply_markup=ikb_menu)
 
-import config
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+main_menu = InlineKeyboardMarkup(
+                                 inline_keyboard=[
+                                    [
+                                     InlineKeyboardButton(text='🔗 Создать ссылку', callback_data='заглушка')
+                                    ],
+                                     [
+                                    InlineKeyboardButton(text='🗄 Мои ссылки', callback_data='заглушка2'),
+                                    InlineKeyboardButton(text='💬 Чаты', callback_data='заглушка3'),
+                                     ],
+                                     [
+                                         InlineKeyboardButton(text='⚙️ Настройки', callback_data='заглушка4'),
+                                     ],
 
-async def main_menu(user_id):
-    markup = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(text='🔗 Создать ссылку', callback_data='catalog'),
-            ],
-            [
-                InlineKeyboardButton(text='🗄 Мои ссылки', callback_data='profile'),
-                InlineKeyboardButton(text='💬 Чаты', callback_data='profile'),
-            ],
-            [
-                InlineKeyboardButton(text='⚙️ Настройки', callback_data='information'),
-            ],
-        ]
-    )
-    if config.admin_id in config:
-        markup.add(
-            InlineKeyboardButton(text='⭐️ Админка', callback_data='admin')
-        )
-
-    return markup
+                                 ])
