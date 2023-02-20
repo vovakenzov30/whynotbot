@@ -24,7 +24,8 @@ main_menu = InlineKeyboardMarkup(
     ]
 ),
 
-settings_menu = InlineKeyboardButton(inline_keyboards2=[
+settings_menu = InlineKeyboardMarkup(
+    inline_keyboards2=[
     [
         InlineKeyboardButton(text='✅ Скрыть ник', callback_data='заглушка5'),
         InlineKeyboardButton(text='✅ Скрыть страну', callback_data='заглушка6'),
