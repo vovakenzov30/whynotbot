@@ -14,7 +14,7 @@ async def main_menu(user_id):
             [
                 InlineKeyboardButton(text='🗄 Мои ссылки', callback_data='profile'),
                 InlineKeyboardButton(text='💬 Чаты', callback_data='profile'),
-            ]
+            ],
             [
                 InlineKeyboardButton(text='⚙️ Настройки', callback_data='information'),
             ],
